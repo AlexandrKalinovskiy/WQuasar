@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace WQuasar.Models
 {
@@ -82,5 +84,25 @@ namespace WQuasar.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    //Модель для вывода таблицы редактируемых пользователей
+    public class EditUsersViewModel
+    {
+        public string Id { get; set; }
+        public string Email { get; set; }
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
+        [Display(Name = "Номер телефона")]
+        public string PhoneNumber { get; set; }
+        [Display(Name = "Роли")]
+        public IEnumerable<string> Roles { get; set; }
+    }
+
+    //Модель для редактирования ролей
+    public class EditRolesViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

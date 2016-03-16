@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WQuasar.Models;
+using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WQuasar.Controllers
 {
@@ -15,15 +17,19 @@ namespace WQuasar.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private RoleManager<IdentityRole> _roleManager;
+        private ApplicationDbContext _applicationDbContext;
 
         public ManageController()
         {
+            _applicationDbContext = new ApplicationDbContext();
+            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_applicationDbContext));
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
-            SignInManager = signInManager;
+            SignInManager = signInManager;                
         }
 
         public ApplicationSignInManager SignInManager
@@ -331,7 +337,110 @@ namespace WQuasar.Controllers
             base.Dispose(disposing);
         }
 
-#region Вспомогательные приложения
+        //
+        // GET: /Manage/Users
+        public ActionResult UsersPartial()
+        {
+            var users = UserManager.Users.ToList();
+            var model = new List<EditUsersViewModel>();
+
+            foreach (var user in users)
+            {
+                var u = new EditUsersViewModel
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    Roles = null
+                };
+
+                model.Add(u);
+            }
+
+            ////return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
+            return PartialView(model);
+        }
+
+        // GET: /Manage/EditUser
+        [HttpGet]
+        public async Task<ActionResult> EditUser(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+
+            var model = new EditUsersViewModel
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Roles = null
+            };
+
+            return View(model);
+        }
+
+        // POST: /Manage/EditUser
+        [HttpPost]
+        public async Task<ActionResult> EditUser(EditUsersViewModel model)
+        {
+            var user = await UserManager.FindByIdAsync(model.Id);
+            user.Email = model.Email;
+            user.UserName = model.UserName;
+            user.PhoneNumber = model.PhoneNumber;
+
+            var result = await UserManager.UpdateAsync(user);
+
+            return RedirectToAction("Index");
+        }
+
+        // GET: /Manage/Roles
+        [HttpGet]
+        public ActionResult Roles()
+        {
+            var roles = _roleManager.Roles.ToList();
+
+            var model = new List<EditRolesViewModel>();
+
+            foreach(var role in roles)
+            {
+                model.Add(new EditRolesViewModel
+                {
+                    Id = role.Id,
+                    Name = role.Name
+                });
+            }
+
+            return View(model);
+        }
+
+        // GET: /Manage/AddRole
+        [HttpGet]
+        public async Task<ActionResult> AddRole()
+        {
+            //var role = await _roleManager.FindByIdAsync(id);
+
+            var model = new EditRolesViewModel();
+
+            return View(model);
+        }
+
+        // POST: /Manage/AddRole
+        [HttpPost]
+        public async Task<ActionResult> AddRole(string name)
+        {
+            var role = new IdentityRole { Name = name };
+            var result = await _roleManager.CreateAsync(role);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Roles");
+            }
+
+            return View("Error");
+        }
+
+        #region Вспомогательные приложения
         // Используется для защиты от XSRF-атак при добавлении внешних имен входа
         private const string XsrfKey = "XsrfId";
 

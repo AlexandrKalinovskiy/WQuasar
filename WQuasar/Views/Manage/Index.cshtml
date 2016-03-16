@@ -81,4 +81,9 @@
                 }*@
         </dd>
     </dl>
+
+    @{Html.RenderAction("UsersPartial", "Manage");}
+    @*@Html.Partial("EditUsersPartial")
+    @{Html.RenderPartial("EditUsersPartial", "Manage");}*@
+   
 </div>
