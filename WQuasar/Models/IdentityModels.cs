@@ -29,5 +29,6 @@ namespace WQuasar.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

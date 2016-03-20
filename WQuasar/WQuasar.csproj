@@ -282,9 +282,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Manage\UsersPartial.cshtml" />
-    <Content Include="Views\Manage\EditUser.cshtml" />
     <Content Include="Views\Manage\Roles.cshtml" />
     <Content Include="Views\Manage\AddRole.cshtml" />
+    <Content Include="Views\Manage\EditUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

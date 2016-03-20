@@ -367,6 +367,27 @@ namespace WQuasar.Controllers
         public async Task<ActionResult> EditUser(string id)
         {
             var user = await UserManager.FindByIdAsync(id);
+            var roles =  _roleManager.Roles.Select(r => r.Name).ToList();
+
+            var roleList = new List<EditRolesViewModel>();
+
+            foreach(var role in roles)
+            {
+                var r = new EditRolesViewModel();
+
+                if(UserManager.IsInRole(user.Id, role))
+                {
+                    r.Name = role;
+                    r.IsActived = true;
+                }
+                else
+                {
+                    r.Name = role;
+                    r.IsActived = false;
+                }
+
+                roleList.Add(r);
+            }
 
             var model = new EditUsersViewModel
             {
@@ -374,7 +395,7 @@ namespace WQuasar.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-                Roles = null
+                Roles = roleList
             };
 
             return View(model);
@@ -384,10 +405,28 @@ namespace WQuasar.Controllers
         [HttpPost]
         public async Task<ActionResult> EditUser(EditUsersViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model); //Если модель не корректна, то не предпринимать никаких  действий
+            }
+
             var user = await UserManager.FindByIdAsync(model.Id);
             user.Email = model.Email;
             user.UserName = model.UserName;
             user.PhoneNumber = model.PhoneNumber;
+
+            //Добавляем пользователя в выбранные роли, и удаляем из невыбранных
+            foreach(var role in model.Roles)
+            {
+                if (role.IsActived == true)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, role.Name);
+                }
+                else
+                {
+                    await UserManager.RemoveFromRoleAsync(user.Id, role.Name);
+                }
+            }
 
             var result = await UserManager.UpdateAsync(user);
 

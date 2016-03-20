@@ -96,7 +96,7 @@ namespace WQuasar.Models
         [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
         [Display(Name = "Роли")]
-        public IEnumerable<string> Roles { get; set; }
+        public List<EditRolesViewModel> Roles { get; set; }
     }
 
     //Модель для редактирования ролей
@@ -104,5 +104,6 @@ namespace WQuasar.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public bool IsActived { get; set; }
     }
 }
