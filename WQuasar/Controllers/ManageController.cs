@@ -17,19 +17,19 @@ namespace WQuasar.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        private RoleManager<ApplicationRole> _roleManager;
         private ApplicationDbContext _applicationDbContext;
 
         public ManageController()
         {
             _applicationDbContext = new ApplicationDbContext();
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_applicationDbContext));
+            _roleManager = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(_applicationDbContext));
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
-            SignInManager = signInManager;                
+            SignInManager = signInManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -38,9 +38,9 @@ namespace WQuasar.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -446,7 +446,8 @@ namespace WQuasar.Controllers
                 model.Add(new EditRolesViewModel
                 {
                     Id = role.Id,
-                    Name = role.Name
+                    Name = role.Name,
+                    NumberOfThreads = role.NumberOfThreads
                 });
             }
 
@@ -457,8 +458,6 @@ namespace WQuasar.Controllers
         [HttpGet]
         public async Task<ActionResult> AddRole()
         {
-            //var role = await _roleManager.FindByIdAsync(id);
-
             var model = new EditRolesViewModel();
 
             return View(model);
@@ -466,9 +465,13 @@ namespace WQuasar.Controllers
 
         // POST: /Manage/AddRole
         [HttpPost]
-        public async Task<ActionResult> AddRole(string name)
+        public async Task<ActionResult> AddRole(string name, int numberOfThreads)
         {
-            var role = new IdentityRole { Name = name };
+            var role = new ApplicationRole
+            {
+                Name = name,
+                NumberOfThreads = numberOfThreads
+            };
             var result = await _roleManager.CreateAsync(role);
 
             if (result.Succeeded)

@@ -96,14 +96,17 @@ namespace WQuasar.Models
         [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
         [Display(Name = "Роли")]
-        public List<EditRolesViewModel> Roles { get; set; }
+        public List<EditRolesViewModel> Roles { get; set; }       
     }
 
     //Модель для редактирования ролей
     public class EditRolesViewModel
     {
         public string Id { get; set; }
+        [Display(Name = "Название")]
         public string Name { get; set; }
         public bool IsActived { get; set; }
+        [Display(Name = "Обслуживающих потоков")]
+        public int NumberOfThreads { get; set; }
     }
 }
