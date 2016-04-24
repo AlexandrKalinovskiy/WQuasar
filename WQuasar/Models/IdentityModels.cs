@@ -38,6 +38,7 @@ namespace WQuasar.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         new public DbSet<ApplicationRole> Roles { get; set; }

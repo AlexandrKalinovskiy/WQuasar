@@ -28,5 +28,11 @@ namespace WQuasar.Controllers
 
             return View();
         }
+
+        [Authorize]
+        public ActionResult Subscriptions()
+        {
+            return View();
+        }
     }
 }

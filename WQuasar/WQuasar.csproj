@@ -274,8 +274,25 @@
     <Compile Include="Migrations\201603281607026_DataMigration15.Designer.cs">
       <DependentUpon>201603281607026_DataMigration15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604241756547_1.cs" />
+    <Compile Include="Migrations\201604241756547_1.Designer.cs">
+      <DependentUpon>201604241756547_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\QuasarDbContext\201604241801096_InitialDatabaseCreation.cs" />
+    <Compile Include="Migrations\QuasarDbContext\201604241801096_InitialDatabaseCreation.Designer.cs">
+      <DependentUpon>201604241801096_InitialDatabaseCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\QuasarDbContext\201604241808565_1.cs" />
+    <Compile Include="Migrations\QuasarDbContext\201604241808565_1.Designer.cs">
+      <DependentUpon>201604241808565_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\QuasarDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DbContexts\QuasarDbContext.cs" />
+    <Compile Include="Models\Entities\Service.cs" />
+    <Compile Include="Models\Entities\Subscription.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -358,6 +375,7 @@
     <Content Include="Views\Manage\Roles.cshtml" />
     <Content Include="Views\Manage\AddRole.cshtml" />
     <Content Include="Views\Manage\EditUser.cshtml" />
+    <Content Include="Views\Home\Subscriptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -424,6 +442,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603281607026_DataMigration15.resx">
       <DependentUpon>201603281607026_DataMigration15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604241756547_1.resx">
+      <DependentUpon>201604241756547_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\QuasarDbContext\201604241801096_InitialDatabaseCreation.resx">
+      <DependentUpon>201604241801096_InitialDatabaseCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\QuasarDbContext\201604241808565_1.resx">
+      <DependentUpon>201604241808565_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
