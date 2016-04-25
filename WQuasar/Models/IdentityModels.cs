@@ -3,21 +3,24 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WQuasar.Models.Entities;
+using System.Collections.Generic;
 
 namespace WQuasar.Models
 {
-    // Чтобы добавить данные профиля для пользователя, можно добавить дополнительные свойства в класс ApplicationUser. Дополнительные сведения см. по адресу: http://go.microsoft.com/fwlink/?LinkID=317594.
-    public class ApplicationUser : IdentityUser
+    // Чтобы добавить данные профиля для пользователя, можно добавить дополнительные свойства в класс User. Дополнительные сведения см. по адресу: http://go.microsoft.com/fwlink/?LinkID=317594.
+    public class User : IdentityUser
     {
-        public bool Active { get; set; }    //Состояние пользователя
-
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Обратите внимание, что authenticationType должен совпадать с типом, определенным в CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
+
+        public bool Active { get; set; }    //Состояние пользователя
+        public ICollection<Service> Services { get; set; }  //Сервисы пользователя
     }
 
     public class ApplicationRole : IdentityRole
@@ -33,15 +36,17 @@ namespace WQuasar.Models
 
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("QuasarDatabase")
         {
-            Database.SetInitializer<ApplicationDbContext>(null);
+            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         new public DbSet<ApplicationRole> Roles { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         public static ApplicationDbContext Create()
         {
