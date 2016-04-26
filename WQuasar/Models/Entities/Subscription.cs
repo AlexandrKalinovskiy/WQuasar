@@ -6,6 +6,8 @@ namespace WQuasar.Models.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public int Period { get; set; } //Период действия подписки в месяцах, например: 1 месяц, 2 месяца, 6 месяцев и т.д.
         public List<Service> Services { get; set; }
     }
 }

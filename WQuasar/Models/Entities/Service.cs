@@ -8,7 +8,7 @@ namespace WQuasar.Models.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public ICollection<User> ApplicationUsers { get; set; }  //Пользователи сервиса
+        public ICollection<User> Users { get; set; }  //Пользователи сервиса
         public ICollection<Subscription> Subscriptions { get; set; }    //Подписки содержащие данную услугу
     }
 }
