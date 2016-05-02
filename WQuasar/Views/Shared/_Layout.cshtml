@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -31,11 +32,12 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – Quasar LLC</p>
-        </footer>
+        @RenderBody()      
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">&copy; @DateTime.Now.Year – Quasar LLC</p>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

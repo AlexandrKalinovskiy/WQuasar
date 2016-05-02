@@ -10,6 +10,13 @@ namespace WQuasar.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -32,7 +39,25 @@ namespace WQuasar.Controllers
         [Authorize]
         public ActionResult Subscriptions()
         {
-            return View();
+            var model = new List<SubscriptionsViewModel>();
+            var subscriptions = _dbContext.Subscriptions.ToList();
+
+            foreach (var subscription in subscriptions)
+            {
+                var m = new SubscriptionsViewModel
+                {
+                    Id = subscription.Id,
+                    Name = subscription.Name,
+                    Description = subscription.Description,
+                    Period = subscription.Period,
+                    Services = subscription.Services.ToList(),
+                    IsNew = subscription.IsNew,
+                    Price = subscription.Services.Sum(s => s.Price)
+                };
+
+                model.Add(m);
+            }
+            return View(model);
         }
     }
 }

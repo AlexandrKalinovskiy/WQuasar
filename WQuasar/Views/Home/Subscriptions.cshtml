@@ -1,8 +1,59 @@
-﻿
+﻿@model IEnumerable<WQuasar.Models.SubscriptionsViewModel>
+
 @{
     ViewBag.Title = "Subscriptions";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Subscriptions</h2>
+<div class="page-header">
+    <h2>Выберите один из готовых пакетов услуг или сформируйте свой</h2>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>
+                            @item.Name
+                            @if (item.IsNew == true)
+                            {
+                                <span class="label label-success">Новый</span>
+                            }
+                        </h4>
+                        <small>@item.Description</small>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            @foreach (var service in item.Services)
+                            {
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <span class="glyphicon glyphicon-ok text-primary"></span>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <span class="text-primary">@service.DisplayName</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div class="row text-center">
+                            <button type="button" class="btn btn-primary">Подписаться</button>
+                        </div>                       
+                    </div>
+                    <div class="panel-footer text-center">
+                        <h4>$ @item.Price</h4>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
 

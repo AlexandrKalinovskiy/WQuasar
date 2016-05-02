@@ -47,6 +47,7 @@ namespace WQuasar.Models
         new public DbSet<ApplicationRole> Roles { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<UserService> UserServices { get; set; }
 
         public static ApplicationDbContext Create()
         {

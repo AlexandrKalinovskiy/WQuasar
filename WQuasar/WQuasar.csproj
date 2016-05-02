@@ -131,6 +131,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -193,6 +197,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -234,10 +239,55 @@
     <Compile Include="Migrations\201604261645321_6.Designer.cs">
       <DependentUpon>201604261645321_6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604271236117_7.cs" />
+    <Compile Include="Migrations\201604271236117_7.Designer.cs">
+      <DependentUpon>201604271236117_7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271240093_8.cs" />
+    <Compile Include="Migrations\201604271240093_8.Designer.cs">
+      <DependentUpon>201604271240093_8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271241565_9.cs" />
+    <Compile Include="Migrations\201604271241565_9.Designer.cs">
+      <DependentUpon>201604271241565_9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271243423_10.cs" />
+    <Compile Include="Migrations\201604271243423_10.Designer.cs">
+      <DependentUpon>201604271243423_10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271244178_11.cs" />
+    <Compile Include="Migrations\201604271244178_11.Designer.cs">
+      <DependentUpon>201604271244178_11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021019383_12.cs" />
+    <Compile Include="Migrations\201605021019383_12.Designer.cs">
+      <DependentUpon>201605021019383_12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021038072_13.cs" />
+    <Compile Include="Migrations\201605021038072_13.Designer.cs">
+      <DependentUpon>201605021038072_13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021045019_14.cs" />
+    <Compile Include="Migrations\201605021045019_14.Designer.cs">
+      <DependentUpon>201605021045019_14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021049065_15.cs" />
+    <Compile Include="Migrations\201605021049065_15.Designer.cs">
+      <DependentUpon>201605021049065_15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021105071_16.cs" />
+    <Compile Include="Migrations\201605021105071_16.Designer.cs">
+      <DependentUpon>201605021105071_16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021430131_AddDisplayName.cs" />
+    <Compile Include="Migrations\201605021430131_AddDisplayName.Designer.cs">
+      <DependentUpon>201605021430131_AddDisplayName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Service.cs" />
     <Compile Include="Models\Entities\Subscription.cs" />
+    <Compile Include="Models\Entities\UserService.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -249,26 +299,41 @@
     <Content Include="bootstrap-theme.min.css" />
     <Content Include="bootstrap.css" />
     <Content Include="bootstrap.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fontawesome\font-awesome.css" />
+    <Content Include="Content\fontawesome\font-awesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="dashboard.css" />
     <Content Include="favicon.ico" />
-    <Content Include="font-awesome.css" />
-    <Content Include="font-awesome.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\avatar_user.png" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="bootstrap.css.map" />
     <Content Include="bootstrap-theme.css.map" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -327,9 +392,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -358,6 +420,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604261645321_6.resx">
       <DependentUpon>201604261645321_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271236117_7.resx">
+      <DependentUpon>201604271236117_7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271240093_8.resx">
+      <DependentUpon>201604271240093_8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271241565_9.resx">
+      <DependentUpon>201604271241565_9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271243423_10.resx">
+      <DependentUpon>201604271243423_10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271244178_11.resx">
+      <DependentUpon>201604271244178_11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021019383_12.resx">
+      <DependentUpon>201605021019383_12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021038072_13.resx">
+      <DependentUpon>201605021038072_13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021045019_14.resx">
+      <DependentUpon>201605021045019_14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021049065_15.resx">
+      <DependentUpon>201605021049065_15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021105071_16.resx">
+      <DependentUpon>201605021105071_16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021430131_AddDisplayName.resx">
+      <DependentUpon>201605021430131_AddDisplayName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
