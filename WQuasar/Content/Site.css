@@ -32,82 +32,33 @@ textarea {
     background-color: #f5f5f5;
 }
 
-.pricing-box {  
-    border: 1px solid;
-    flex: 1;
+/*--------------------------------------------------*/
+.pricing-boxes .panel-heading {
+    /*max-height: 80px;*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: none;
 }
 
-    .pricing-box header {
-
-    }
-
-    .pricing-box article {
-        padding: 10px;
-    }
-
-        .pricing-box article ul li {
-            border-bottom: 1px dotted #ddd;
-            margin-bottom: 5px;
-        }
-
-    .pricing-box footer {
-        margin-bottom: 20px;
-    }
-
-.pricing-box-primary {
-    border-color: #337AB7;
-}
-
-.pricing-box-price {
+.pricing-boxes .panel-heading .price {
     background-color: #EDEDED;
+    margin-bottom: -10px;
     margin-top: 10px;
+    color: #666666;
+    border-bottom: solid 1px #ddd;
 }
 
-    .pricing-box-price h4 {
-        color: #666666;
+.pricing-boxes .panel-body {
+    padding: 15px 25px 0 25px;
+    min-height: 200px;
+}
+
+    .pricing-boxes .panel-body .glyphicon {
+        margin-right: 10px;
     }
 
-.pricing-boxes {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
+.pricing-boxes .panel-info .panel-body {
+    min-height: 100px;
 }
 
-.test{
-        display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.pricing-table-cell {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.pricing-boxes .panel {
-    /*height: 360px;*/
-}
-
-    .pricing-boxes .panel .panel-heading {
-        padding-left: 0;
-        padding-right: 0;
-        padding-bottom: 0;
-        border-bottom: 0;
-    }
-
-        .pricing-boxes .panel .panel-heading .price {
-            background-color: #F5F5F5;
-            color: #666666;
-            margin-top: 10px;
-            border-bottom: solid 1px #ddd;
-        }
-
-            .pricing-boxes .panel .panel-heading .price h4 {
-                padding: 10px;
-                margin: 0;
-            }

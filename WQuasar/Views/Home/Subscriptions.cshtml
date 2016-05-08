@@ -8,14 +8,49 @@
 <div class="page-header">
     <h2>Выберите один из готовых пакетов услуг или сформируйте свой</h2>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row pricing-boxes">
         @foreach (var item in Model)
         {
-            @*<div class="col-md-4 col-sm-6 pricing-table-cell">
-                <div class="pricing-box pricing-box-primary col-md-12">
-                    <header class="row bg-primary text-center">
-                        <div class="col-md-12">
+            if (item.Name != "Custom")
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-center">
+                            <h4>
+                                @item.Name
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="label label-success">Новый</span>
+                                }
+                            </h4>
+                            <small>@item.Description</small>
+                            <div class="row price">
+                                <h4>$ @item.Price</h4>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                @foreach (var service in item.Services)
+                                {
+                                    <li>
+                                        <span class="glyphicon glyphicon-ok text-primary"></span>
+                                        <span class="text-primary">@service.DisplayName</span>
+                                    </li>
+                                }
+                            </ul>
+                      </div>
+                      <div class="panel-footer text-center">
+                          <button type="button" class="btn btn-primary">Подключить</button>
+                      </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4">
+                    <div class="panel panel-default panel-info">
+                        <div class="panel-heading text-center">
                             <h4>
                                 @item.Name
                                 @if (item.IsNew == true)
@@ -25,74 +60,22 @@
                             </h4>
                             <small>@item.Description</small>
                         </div>
-                        <div class="col-md-12 pricing-box-price">
-                            <h4>$ @item.Price</h4>                            
+                        <div class="panel-body">
+                            <p>Сформируйте собственный пакет услуг.</p>
                         </div>
-                    </header>
-                    <article class="row">
-                        <ul class="list-unstyled">
-                            @foreach (var service in item.Services)
-                            {
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <span class="glyphicon glyphicon-ok text-primary"></span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="text-primary">@service.DisplayName</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </article>
-                    <footer class="row text-center">
-                        <button type="button" class="btn btn-primary">Подключить</button>
-                    </footer>
-                </div>
-            </div>*@
-            <div class="col-md-4 col-sm-6 test">
-                <div class="panel panel-primary">
-                    <div class="panel-heading text-center">
-                        <h4>
-                            @item.Name
-                            @if (item.IsNew == true)
-                            {
-                                <span class="label label-success">Новый</span>
-                            }
-                        </h4>
-                        <small>@item.Description</small>
-                        <div class="price">
-                            <h4>$ @item.Price</h4>
+                        <div class="panel-footer text-center">
+                            <button type="button" class="btn btn-primary">Подключить</button>
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            @foreach (var service in item.Services)
-                            {
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <span class="glyphicon glyphicon-ok text-primary"></span>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <span class="text-primary">@service.DisplayName</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="panel-footer text-center">
-                        <button type="button" class="btn btn-primary">Подключить</button>
-                    </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>
 
-
-
-
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$(".panel-body").css("height", "200px");
+        console.log("SLON");
+    });
+</script>
