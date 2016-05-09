@@ -52,7 +52,8 @@ namespace WQuasar.Controllers
                     Period = subscription.Period,
                     Services = subscription.Services.ToList(),
                     IsNew = subscription.IsNew,
-                    Price = subscription.Services.Sum(s => s.Price)
+                    Price = subscription.Services.Sum(s => s.Price),
+                    CssClass = subscription.CssClass
                 };
 
                 model.Add(m);

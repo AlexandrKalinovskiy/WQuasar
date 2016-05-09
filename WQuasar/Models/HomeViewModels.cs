@@ -18,5 +18,6 @@ namespace WQuasar.Models
         public List<Service> Services { get; set; }
         public decimal Price { get; set; }
         public bool IsNew { get; set; }
+        public string CssClass { get; set; }
     }
 }
