@@ -35,30 +35,5 @@ namespace WQuasar.Controllers
 
             return View();
         }
-
-        [Authorize]
-        public ActionResult Subscriptions()
-        {
-            var model = new List<SubscriptionsViewModel>();
-            var subscriptions = _dbContext.Subscriptions.ToList();
-
-            foreach (var subscription in subscriptions)
-            {
-                var m = new SubscriptionsViewModel
-                {
-                    Id = subscription.Id,
-                    Name = subscription.Name,
-                    Description = subscription.Description,
-                    Period = subscription.Period,
-                    Services = subscription.Services.ToList(),
-                    IsNew = subscription.IsNew,
-                    Price = subscription.Services.Sum(s => s.Price),
-                    CssClass = subscription.CssClass
-                };
-
-                model.Add(m);
-            }
-            return View(model);
-        }
     }
 }

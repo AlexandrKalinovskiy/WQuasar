@@ -48,6 +48,7 @@ namespace WQuasar.Models
         public DbSet<Service> Services { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<UserService> UserServices { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -45,7 +45,11 @@
                             </ul>
                       </div>
                       <div class="panel-footer text-center">
-                          <button type="button" class="btn btn-@item.CssClass">Подключить</button>
+                          @using (Html.BeginForm("Payment", "Subscriptions", FormMethod.Post))
+                          {
+                              <input type="hidden" value="@item.Id" name="SubscriptionId" />
+                              <input type="submit" class="btn btn-@item.CssClass" value="Подключить" />
+                          }
                       </div>
                     </div>
                 </div>
@@ -68,7 +72,11 @@
                             <p>Сформируйте собственный пакет услуг.</p>
                         </div>
                         <div class="panel-footer text-center">
-                            <button type="button" class="btn btn-@item.CssClass">Подключить</button>
+                            @using (Html.BeginForm("Payment", "Subscriptions", FormMethod.Post))
+                            {
+                                <input type="hidden" value="12" name="SubId" id="SubId" />
+                                <input type="submit" class="btn btn-@item.CssClass" value="Создать" />
+                            }
                         </div>
                     </div>
                 </div>

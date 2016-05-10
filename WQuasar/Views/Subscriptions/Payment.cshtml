@@ -1,0 +1,53 @@
+﻿@model WQuasar.Models.PaymentViewModel
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="navbar navbar-default">
+        <div class="container">
+            <h2>Оплата пакета услуг "@Model.SubscriptionName"</h2>
+        </div>
+    </div>
+</div>
+@if (Model == null)
+{
+<div class="container">
+    <h2>Payment</h2>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">Ошибка</div>
+                <div class="panel-body">@Html.ValidationSummary(true)</div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Выберите способ оплаты</h3>
+                @foreach (var payment in Model.Payments)
+                {
+                    <blockquote class="noselect">
+                        <p>@payment.Name</p>
+                        <footer>@payment.Description</footer>
+                    </blockquote>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-default">Оплатить</button>
+            </div>
+        </div>
+    </div>
+}
+
+
